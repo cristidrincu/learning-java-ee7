@@ -1,0 +1,2 @@
+boundary - business logic - where, for example, a car gets manufactured
+control - the classes from boundary delegate the creation of a care to a factory, a car factory
