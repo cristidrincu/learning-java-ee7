@@ -4,6 +4,9 @@ import javax.json.bind.annotation.JsonbProperty;
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static com.cristiandrincu.entity.Car.FIND_ALL;
 import static com.cristiandrincu.entity.Car.FIND_CAR;
 
@@ -29,6 +32,10 @@ public class Car {
     @Enumerated(EnumType.STRING)
     private EngineType engineType;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) //one car, many seats
+    @JoinColumn(name = "car_id", nullable = false)
+    private Set<Seat> seats = new HashSet<>();
+
     public String getIdentifier() {
         return identifier;
     }
@@ -51,6 +58,10 @@ public class Car {
 
     public void setEngineType(EngineType engineType) {
         this.engineType = engineType;
+    }
+
+    public Set<Seat> getSeats() {
+        return seats;
     }
 
     @Override
