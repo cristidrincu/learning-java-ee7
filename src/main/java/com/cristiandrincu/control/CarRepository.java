@@ -29,4 +29,13 @@ public class CarRepository {
         car.setEngineType(engineType);
         return car;
     }
+
+    public Car retrieveCar(String identifier) {
+        Car car = new Car();
+        car.setIdentifier(identifier);
+        car.setColor(Color.BLACK);
+        car.setEngineType(EngineType.DIESEL);
+
+        return car;
+    }
 }

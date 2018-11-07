@@ -1,10 +1,18 @@
 package com.cristiandrincu.entity;
 
+import javax.validation.constraints.NotNull;
+
 //immutable class - only getters
 public class Specification {
 
-    private final Color color;
-    private final EngineType engineType;
+    @NotNull
+    private Color color;
+
+    @NotNull
+    @EnvironmentalFriendly
+    private EngineType engineType;
+
+    public Specification() {}
 
     public Specification(Color color, EngineType engineType) {
         this.color = color;

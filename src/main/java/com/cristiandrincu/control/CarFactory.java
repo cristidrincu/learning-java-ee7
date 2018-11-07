@@ -6,6 +6,7 @@ import com.cristiandrincu.entity.Specification;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.Random;
 import java.util.UUID;
 
 public class CarFactory {
@@ -16,6 +17,10 @@ public class CarFactory {
     Color defaultCarColor;
 
     public Car createCar(Specification specification) {
+        //for testing purposes
+        if (new Random().nextBoolean())
+            throw new CarCreationException("Could not create car");
+
         Car car = new Car();
         car.setIdentifier(UUID.randomUUID().toString());
         car.setColor(specification.getColor() == null ? defaultCarColor : specification.getColor());
